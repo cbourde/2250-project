@@ -6,7 +6,17 @@ public class Player : MonoBehaviour
 {
     public static Player P;
     public float speed;
+    public int maxHealth = 10;
     public Rigidbody rb;
+
+    [Header("Stats")]
+    public int strength = 1;
+    public int dexterity = 1;
+    public int constitution = 1;
+    public int intelligence = 1;
+    public int wisdom = 1;
+    public int charisma = 1;
+    private int _health;
  
     // Start is called before the first frame update
     void Awake()
@@ -20,6 +30,7 @@ public class Player : MonoBehaviour
             Debug.LogError("Error: Player already exists");
         }
         rb = GetComponent<Rigidbody>();
+        _health = maxHealth;
     }
 
     // Update is called once per frame
@@ -54,6 +65,18 @@ public class Player : MonoBehaviour
         set
         {
             transform.position = value;
+        }
+    }
+
+    public int health
+    {
+        get
+        {
+            return _health;
+        }
+        set
+        {
+            _health = value;
         }
     }
 }
