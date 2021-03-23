@@ -6,6 +6,7 @@ public class Player : MonoBehaviour
 {
     public static Player P;
     public float speed;
+    public float jumpForce;
     public int maxHealth = 10;
     public Rigidbody rb;
 
@@ -17,6 +18,7 @@ public class Player : MonoBehaviour
     public int wisdom = 1;
     public int charisma = 1;
     private int _health;
+    public bool _hasJumped = false;
  
     // Start is called before the first frame update
     void Awake()
@@ -33,10 +35,19 @@ public class Player : MonoBehaviour
         _health = maxHealth;
     }
 
+    void Update()
+    {
+        if (!_hasJumped && Input.GetKey(KeyCode.Space))
+        {
+            Jump();
+        }
+    }
+
     // Update is called once per frame
     void FixedUpdate()
     {
         Move();
+        
     }
 
     void Move()
@@ -55,6 +66,22 @@ public class Player : MonoBehaviour
         
         
     }
+
+    void Jump()
+    {
+        rb.AddForce(jumpForce * Vector3.up, ForceMode.VelocityChange);
+        _hasJumped = true;
+    }
+
+    
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.transform.CompareTag("Ground"))
+        {
+            _hasJumped = false;
+        }
+    }
+    
 
     public Vector3 pos
     {
