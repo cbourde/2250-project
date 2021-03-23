@@ -32,7 +32,10 @@ public class Player : MonoBehaviour
             Debug.LogError("Error: Player already exists");
         }
         rb = GetComponent<Rigidbody>();
+        maxHealth += 5 * (constitution - 1);
         _health = maxHealth;
+        speed += 0.025f * (dexterity - 1);
+        jumpForce += 0.5f * (dexterity - 1);
     }
 
     void Update()
