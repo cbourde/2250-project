@@ -6,6 +6,7 @@ public class Player : MonoBehaviour
 {
     public static Player P;
     public float speed;
+    public float jumpForce;
     public int maxHealth = 10;
     public Rigidbody rb;
     public GameObject warrior;
@@ -21,7 +22,8 @@ public class Player : MonoBehaviour
     public static string charClass = "Warrior";
 
     private int _health;
-
+    public bool _hasJumped = false;
+ 
     // Start is called before the first frame update
     void Awake()
     {
@@ -34,7 +36,18 @@ public class Player : MonoBehaviour
             Debug.LogError("Error: Player already exists");
         }
         rb = GetComponent<Rigidbody>();
+        maxHealth += 5 * (constitution - 1);
         _health = maxHealth;
+        speed += 0.025f * (dexterity - 1);
+        jumpForce += 0.5f * (dexterity - 1);
+    }
+
+    void Update()
+    {
+        if (!_hasJumped && Input.GetKey(KeyCode.Space))
+        {
+            Jump();
+        }
     }
 
     /*private void Start()
@@ -49,6 +62,7 @@ public class Player : MonoBehaviour
     void FixedUpdate()
     {
         Move();
+        
     }
 
     void Move()
@@ -66,6 +80,22 @@ public class Player : MonoBehaviour
         rb.MoveRotation(Quaternion.Euler(0, direction, 0));
         
     }
+
+    void Jump()
+    {
+        rb.AddForce(jumpForce * Vector3.up, ForceMode.VelocityChange);
+        _hasJumped = true;
+    }
+
+    
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.transform.CompareTag("Ground"))
+        {
+            _hasJumped = false;
+        }
+    }
+    
 
     public Vector3 pos
     {
