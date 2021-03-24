@@ -15,7 +15,7 @@ public class RevealWithHighWisdom : MonoBehaviour
     }
     void Update()
     {
-        if (Player.P.wisdom < wisdomRequired)
+        if (Player.wisdom < wisdomRequired)
         {
             mesh.forceRenderingOff = true;
         }

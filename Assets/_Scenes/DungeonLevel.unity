@@ -7922,6 +7922,18 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 2920755935823212640, guid: 3228f1decdb14254fbca7938300384c1,
+        type: 3}
+      propertyPath: mage
+      value: 
+      objectReference: {fileID: 6973438078516440177, guid: d35febd428324a8478ac7d9ce78c12b2,
+        type: 3}
+    - target: {fileID: 2920755935823212640, guid: 3228f1decdb14254fbca7938300384c1,
+        type: 3}
+      propertyPath: warrior
+      value: 
+      objectReference: {fileID: 2109571910475415262, guid: 3228f1decdb14254fbca7938300384c1,
+        type: 3}
     - target: {fileID: 4978849653033375484, guid: 3228f1decdb14254fbca7938300384c1,
         type: 3}
       propertyPath: m_Materials.Array.data[0]

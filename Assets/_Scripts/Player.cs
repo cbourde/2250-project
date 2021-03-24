@@ -9,14 +9,18 @@ public class Player : MonoBehaviour
     public float jumpForce;
     public int maxHealth = 10;
     public Rigidbody rb;
+    public GameObject warrior;
+    public GameObject mage;
 
     [Header("Stats")]
-    public int strength = 1;
-    public int dexterity = 1;
-    public int constitution = 1;
-    public int intelligence = 1;
-    public int wisdom = 1;
-    public int charisma = 1;
+    public static int strength = 1;
+    public static int dexterity = 1;
+    public static int constitution = 1;
+    public static int intelligence = 1;
+    public static int wisdom = 1;
+    public static int charisma = 1;
+    public static string charClass = "Warrior";
+
     private int _health;
     public bool _hasJumped = false;
  
@@ -46,6 +50,14 @@ public class Player : MonoBehaviour
         }
     }
 
+    /*private void Start()
+    {
+        if (charClass.Equals("Warrior"))
+        {
+            gameObject = warrior;
+        }
+    }*/
+
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -66,7 +78,6 @@ public class Player : MonoBehaviour
         }
         
         rb.MoveRotation(Quaternion.Euler(0, direction, 0));
-        
         
     }
 
