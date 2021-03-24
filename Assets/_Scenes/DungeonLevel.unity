@@ -2162,49 +2162,6 @@ Transform:
   m_Father: {fileID: 1339774234}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &750473970 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2109571910475415262, guid: 3228f1decdb14254fbca7938300384c1,
-    type: 3}
-  m_PrefabInstance: {fileID: 5273872199107001347}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &750473972
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 750473970}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb287fc1e0aec3a4e98a326f5f371158, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 0.1
-  maxHealth: 0
-  rb: {fileID: 0}
-  strength: 0
-  dexterity: 0
-  constitution: 0
-  intelligence: 0
-  wisdom: 0
-  charisma: 0
---- !u!54 &750473973
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 750473970}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 80
-  m_CollisionDetection: 0
 --- !u!1001 &782105411
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7711,6 +7668,18 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 2920755935823212640, guid: 3228f1decdb14254fbca7938300384c1,
+        type: 3}
+      propertyPath: mage
+      value: 
+      objectReference: {fileID: 6973438078516440177, guid: d35febd428324a8478ac7d9ce78c12b2,
+        type: 3}
+    - target: {fileID: 2920755935823212640, guid: 3228f1decdb14254fbca7938300384c1,
+        type: 3}
+      propertyPath: warrior
+      value: 
+      objectReference: {fileID: 2109571910475415262, guid: 3228f1decdb14254fbca7938300384c1,
+        type: 3}
     - target: {fileID: 4978849653033375484, guid: 3228f1decdb14254fbca7938300384c1,
         type: 3}
       propertyPath: m_Materials.Array.data[0]

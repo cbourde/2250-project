@@ -8,16 +8,20 @@ public class Player : MonoBehaviour
     public float speed;
     public int maxHealth = 10;
     public Rigidbody rb;
+    public GameObject warrior;
+    public GameObject mage;
 
     [Header("Stats")]
-    public int strength = 1;
-    public int dexterity = 1;
-    public int constitution = 1;
-    public int intelligence = 1;
-    public int wisdom = 1;
-    public int charisma = 1;
+    public static int strength = 1;
+    public static int dexterity = 1;
+    public static int constitution = 1;
+    public static int intelligence = 1;
+    public static int wisdom = 1;
+    public static int charisma = 1;
+    public static string charClass = "Warrior";
+
     private int _health;
- 
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -32,6 +36,14 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         _health = maxHealth;
     }
+
+    /*private void Start()
+    {
+        if (charClass.Equals("Warrior"))
+        {
+            gameObject = warrior;
+        }
+    }*/
 
     // Update is called once per frame
     void FixedUpdate()
@@ -52,7 +64,6 @@ public class Player : MonoBehaviour
         }
         
         rb.MoveRotation(Quaternion.Euler(0, direction, 0));
-        
         
     }
 
