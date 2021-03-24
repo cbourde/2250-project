@@ -12,8 +12,8 @@ public class FireArrow : MonoBehaviour
        //on a mouse click a projectile will fire
      }
      void shootArrow(){
-        GameObject clone = Instantiate(Arrow, transform.position, transform.rotation);
-        clone.transform.position = this.transform.position;
+        GameObject clone = Instantiate<GameObject>(Arrow, transform.position, transform.rotation);
+        clone.transform.position = transform.position;
      }
      //based on the position of the player that is the direction the projectile will be fired
 
