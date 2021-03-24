@@ -18,9 +18,21 @@ public class Projectile : MonoBehaviour
     void Update()
     {
         transform.position +=transform.forward*speed*Time.deltaTime;
+        // the arrow will be fired in the forward direction at a certain speed
         lifeTimer-= Time.deltaTime;
         if(lifeTimer<=0f){
           Destroy (gameObject);
         }
+        //after 2 seconds the game object will be destroyed to not overload the game
+
     }
+    private void OnTriggerEnter(Collider other)
+      {
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            other.gameObject.SetActive(false);
+        }
+      }
+      //if the arrow interacts with the enemy is will destroy it
+
 }

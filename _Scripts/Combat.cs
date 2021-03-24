@@ -11,4 +11,5 @@ public class Combat : MonoBehaviour
           other.gameObject.SetActive(false);
       }
     }
+    //if the player runs into the enemy with the sword, the enemy will be destroyed
 }
