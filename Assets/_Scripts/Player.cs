@@ -7,10 +7,16 @@ public class Player : Character
 {
     public static Player P; // Singleton player object
     public float jumpForce; // Jump force
+    public int attackDamage = 5;
+    private int _xp = 0;
+    private int _xpToNextLevel = 50;
+    private int _level = 1;
+    
     //public float damageTimer = 2;   // Timer for repeated damage
     //public GameObject enemy;    // Enemy to damage or take damage from (to be replaced with a list)
     public Text healthDisplay;  // Health display UI text
     public Text deathMessage;   // Death message UI text
+    public Text xpDisplay;
     public Rigidbody rb;
     public Vector3 movement;
     //public GameObject warrior;
@@ -45,17 +51,15 @@ public class Player : Character
         health = maxHealth;
 
         // Initialize health display
-        if (healthDisplay != null)
-        {
-            healthDisplay.text = "Health: " + health + " / " + maxHealth;
-        }
-        else
-        {
-            Debug.LogError("Error: Health display object is null");
-        }
+        UpdateHealthDisplay();
+        UpdateXPDisplay();
+
         // Set speed and jump based on DEX score
         movementSpeed += 0.025f * (dexterity - 1);
         jumpForce += 0.5f * (dexterity - 1);
+
+        // Set attack damage based on STR score
+        attackDamage += 5 * (strength - 1);
 
     }
 
@@ -137,7 +141,19 @@ public class Player : Character
         }
     }
 
-    public override void Die() //can be overwritten for either enemy
+    private void UpdateXPDisplay()
+    {
+        if (xpDisplay != null)
+        {
+            xpDisplay.text = "XP: " + _xp + " / " + _xpToNextLevel + "\n" + "Level: " + _level;
+        }
+        else
+        {
+            Debug.LogError("Error: XP display object is null");
+        }
+    }
+
+    public override void Die() 
     {
 
         deathMessage.gameObject.SetActive(true);
@@ -151,6 +167,22 @@ public class Player : Character
         {
             _hasJumped = false;
         }
+    }
+
+    public void AwardXP(int xp)
+    {
+        _xp += xp;
+        if (_xp >= _xpToNextLevel)
+        {
+            _xpToNextLevel *= 2;
+            LevelUp();
+        }
+        UpdateXPDisplay();
+    }
+
+    public void LevelUp()
+    {
+        _level++;
     }
     
 }

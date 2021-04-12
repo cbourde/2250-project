@@ -11,6 +11,8 @@ public class Enemy : Character
     public int attackDamage = 10;
     public float attackInterval = 1.5f;
     public int _attackTimer;
+    public int xpValue = 30;
+    public int enemyHealth = 50;
 
     Transform target;
 
@@ -27,6 +29,8 @@ public class Enemy : Character
 
     void Awake()
     {
+        maxHealth = enemyHealth;
+        health = maxHealth;
         Application.targetFrameRate = 60;
     }
 
@@ -85,6 +89,7 @@ public class Enemy : Character
     public override void Die()
     {
         canAttack = false;
+        Player.P.AwardXP(xpValue);
         Destroy(gameObject);
     }
 

@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-  public float speed = 8f;
-  public float lifeDuration = 2f;
-  private float lifeTimer;
+    public float speed = 8f;
+    public float lifeDuration = 2f;
+    public int damage = 10;
+    private float lifeTimer;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,7 +31,9 @@ public class Projectile : MonoBehaviour
       {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            other.gameObject.SetActive(false);
+            Enemy e = other.gameObject.GetComponent<Enemy>();
+            e.TakeDamage(damage);
+            Destroy(gameObject);
         }
       }
       //if the arrow interacts with the enemy is will destroy it
