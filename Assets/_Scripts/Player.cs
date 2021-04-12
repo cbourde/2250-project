@@ -17,6 +17,7 @@ public class Player : Character
     public Text healthDisplay;  // Health display UI text
     public Text deathMessage;   // Death message UI text
     public Text xpDisplay;
+    public GameObject levelUpMenu;
     public Rigidbody rb;
     public Vector3 movement;
     //public GameObject warrior;
@@ -183,6 +184,17 @@ public class Player : Character
     public void LevelUp()
     {
         _level++;
+        levelUpMenu.SetActive(true);
+        Time.timeScale = 0;
+    }
+
+    public void UpdateStats()
+    {
+        maxHealth = 50 + 10 * (constitution - 1);
+        movementSpeed = 0.1f + 0.025f * (dexterity - 1);
+        jumpForce = 4 + 0.5f * (dexterity - 1);
+        attackDamage = 5 + 5 * (strength - 1);
+        UpdateHealthDisplay();
     }
     
 }

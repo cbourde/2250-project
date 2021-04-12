@@ -79,6 +79,9 @@ public class Enemy : Character
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, viewRadius);
+
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(transform.position, attackReach);
     }
 
     private void Attack()
