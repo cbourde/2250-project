@@ -1,18 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class Player : MonoBehaviour
+public class Player : Character
 {
-    public static Player P;
-    public float speed;
-    public float jumpForce;
-    public int maxHealth = 10;
+    public static Player P; // Singleton player object
+    public float jumpForce; // Jump force
+    //public float damageTimer = 2;   // Timer for repeated damage
+    //public GameObject enemy;    // Enemy to damage or take damage from (to be replaced with a list)
+    public Text healthDisplay;  // Health display UI text
+    public Text deathMessage;   // Death message UI text
     public Rigidbody rb;
-    public GameObject warrior;
-    public GameObject mage;
+    public Vector3 movement;
+    //public GameObject warrior;
+    //public GameObject mage;
 
-    [Header("Stats")]
+    // Stats (must be static for character creation to work properly)
     public static int strength = 1;
     public static int dexterity = 1;
     public static int constitution = 1;
@@ -20,13 +24,11 @@ public class Player : MonoBehaviour
     public static int wisdom = 1;
     public static int charisma = 1;
     public static string charClass = "Warrior";
-
-    private int _health;
     public bool _hasJumped = false;
  
-    // Start is called before the first frame update
     void Awake()
     {
+        // Initialize the singleton
         if (P == null)
         {
             P = this;
@@ -35,67 +37,27 @@ public class Player : MonoBehaviour
         {
             Debug.LogError("Error: Player already exists");
         }
+
         rb = GetComponent<Rigidbody>();
-        maxHealth += 5 * (constitution - 1);
-        _health = maxHealth;
-        speed += 0.025f * (dexterity - 1);
+
+        // Set maximum health based on CON score
+        maxHealth = 50 + 10 * (constitution - 1);
+        health = maxHealth;
+
+        // Initialize health display
+        if (healthDisplay != null)
+        {
+            healthDisplay.text = "Health: " + health + " / " + maxHealth;
+        }
+        else
+        {
+            Debug.LogError("Error: Health display object is null");
+        }
+        // Set speed and jump based on DEX score
+        movementSpeed += 0.025f * (dexterity - 1);
         jumpForce += 0.5f * (dexterity - 1);
-    }
 
-    void Update()
-    {
-        if (!_hasJumped && Input.GetKey(KeyCode.Space))
-        {
-            Jump();
-        }
     }
-
-    /*private void Start()
-    {
-        if (charClass.Equals("Warrior"))
-        {
-            gameObject = warrior;
-        }
-    }*/
-
-    // Update is called once per frame
-    void FixedUpdate()
-    {
-        Move();
-        
-    }
-
-    void Move()
-    {
-        float xAxis = Input.GetAxis("Horizontal");
-        float zAxis = Input.GetAxis("Vertical");
-        Vector3 movement = new Vector3(xAxis, 0, zAxis);
-        rb.MovePosition(pos + speed * movement.normalized);
-        float direction = Vector3.Angle(Vector3.back, movement);
-        if (movement.x > 0)
-        {
-            direction = -direction;
-        }
-        
-        rb.MoveRotation(Quaternion.Euler(0, direction, 0));
-        
-    }
-
-    void Jump()
-    {
-        rb.AddForce(jumpForce * Vector3.up, ForceMode.VelocityChange);
-        _hasJumped = true;
-    }
-
-    
-    void OnCollisionEnter(Collision collision)
-    {
-        if (collision.transform.CompareTag("Ground"))
-        {
-            _hasJumped = false;
-        }
-    }
-    
 
     public Vector3 pos
     {
@@ -109,15 +71,86 @@ public class Player : MonoBehaviour
         }
     }
 
-    public int health
+    void Update()
     {
-        get
+        // Jump if space bar is pressed
+        if (!_hasJumped && Input.GetKey(KeyCode.Space))
         {
-            return _health;
-        }
-        set
-        {
-            _health = value;
+            Jump();
         }
     }
+
+    // Update is called once per frame
+    void FixedUpdate()
+    {
+        Move();
+        
+    }
+
+    void Move()
+    {
+        // Move player based on keyboard input
+        float xAxis = Input.GetAxis("Horizontal");
+        float zAxis = Input.GetAxis("Vertical");
+        movement = new Vector3(xAxis, 0, zAxis);
+        rb.MovePosition(pos + movementSpeed * movement.normalized);
+        
+        // Turn player in direction of movement if moving
+        if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
+        {
+            
+
+            float direction = Vector3.Angle(Vector3.back, movement);
+            if (movement.x > 0)
+            {
+                direction = -direction;
+            }
+            rb.MoveRotation(Quaternion.Euler(0, direction, 0));
+        }
+        else
+        {
+            rb.angularVelocity = Vector3.zero;
+        }
+    }
+
+    void Jump()
+    {
+        rb.AddForce(jumpForce * Vector3.up, ForceMode.VelocityChange);
+        _hasJumped = true;
+    }
+
+    public override void TakeDamage(int dmg) //gameObject takes damage
+    {
+        base.TakeDamage(dmg);
+        UpdateHealthDisplay();
+    }
+
+    private void UpdateHealthDisplay()
+    {
+        if (healthDisplay != null)
+        {
+            healthDisplay.text = "Health: " + health + " / " + maxHealth;
+        }
+        else
+        {
+            Debug.LogError("Error: Health display object is null");
+        }
+    }
+
+    public override void Die() //can be overwritten for either enemy
+    {
+
+        deathMessage.gameObject.SetActive(true);
+        gameObject.SetActive(false);
+        Time.timeScale = 0;
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.transform.CompareTag("Ground"))
+        {
+            _hasJumped = false;
+        }
+    }
+    
 }
