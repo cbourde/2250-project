@@ -1,7 +1,7 @@
 # 2250-project
 SE2250 Final Project - Group 34
 
-##Features implemented so far:
+## Features implemented so far:
 - Explorable dungeon
 - Character customization (stats affecting speed, jump, attack, health, perception)
 - Character progression (XP and level-up system)
@@ -10,7 +10,7 @@ SE2250 Final Project - Group 34
 - Combat (ranged and melee)
 - Solvable puzzle with XP reward
 
-##TODO:
+## TODO:
 - Make another level (just the terrain, most other stuff can be reused)
 - Make the pressure plate in the hall trigger the swinging trap
 - Make it possible to clear the caved-in hall
