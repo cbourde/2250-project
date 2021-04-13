@@ -26,7 +26,7 @@ public class CharacterCreation : MonoBehaviour
 
     private void Update()
     {
-        pointDisplay.text = "Remaing Points: " + statPoints.ToString(); //updates text telling user how many points to allocate are remaining
+        pointDisplay.text = "Remaining Points: " + statPoints.ToString(); //updates text telling user how many points to allocate are remaining
         if (statPoints == 0) //set of code to activate/deactivate the finish character creation when there are no stats left to allocate
         {
             finish.gameObject.SetActive(true);
