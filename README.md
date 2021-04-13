@@ -11,9 +11,9 @@ SE2250 Final Project - Group 34
 - Solvable puzzle with XP reward
 
 ## TODO:
-- Make another level (just the terrain, most other stuff can be reused)
-- Make the pressure plate in the hall trigger the swinging trap
-- Make it possible to clear the caved-in hall
-- [Completed in new branch] Add something (probably XP) to the room after the cave-in
-- Add an exit after the boss room
-- [Completed in new branch] Something with an animation (maybe use animation instead of a script to make the collectibles spin?)
+- [ ] Make another level (just the terrain, most other stuff can be reused)
+- [ ] Make the pressure plate in the hall trigger the swinging trap
+- [ ] Make it possible to clear the caved-in hall
+- [x] Add something (probably XP) to the room after the cave-in
+- [ ] Add an exit after the boss room
+- [x] Something with an animation (maybe use animation instead of a script to make the collectibles spin?)
