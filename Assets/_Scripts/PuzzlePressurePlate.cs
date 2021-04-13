@@ -48,4 +48,10 @@ public class PuzzlePressurePlate : MonoBehaviour
             Press();
         }
     }
+
+    public bool isPressed()
+    {
+        return _pressed;
+    }
+
 }
