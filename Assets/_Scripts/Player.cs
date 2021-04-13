@@ -191,6 +191,7 @@ public class Player : Character
     public void UpdateStats()
     {
         maxHealth = 50 + 10 * (constitution - 1);
+        health = maxHealth;
         movementSpeed = 0.1f + 0.025f * (dexterity - 1);
         jumpForce = 4 + 0.5f * (dexterity - 1);
         attackDamage = 5 + 5 * (strength - 1);
