@@ -107,7 +107,7 @@ GameObject:
   - component: {fileID: 8038302775776973672}
   m_Layer: 0
   m_Name: Arrow
-  m_TagString: Untagged
+  m_TagString: Arrow
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -159,6 +159,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 8
   lifeDuration: 2
+  damage: 10
 --- !u!65 &8038302775776973672
 BoxCollider:
   m_ObjectHideFlags: 0

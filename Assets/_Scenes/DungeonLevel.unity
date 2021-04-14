@@ -7749,7 +7749,7 @@ MonoBehaviour:
   viewRadius: 10
   attackReach: 5
   canAttack: 0
-  attackDamage: 20
+  attackDamage: 10
   attackInterval: 1.5
   _attackTimer: 0
   xpValue: 50

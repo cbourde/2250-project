@@ -19,7 +19,6 @@ public class CharacterCreation : MonoBehaviour
     {
         pointDisplay = gameObject.transform.GetChild(1).GetComponent<TextMeshProUGUI>(); //assigning all components to their respective variables
         finish = gameObject.transform.GetChild(2).GetComponent<Button>();
-        //classChoice = gameObject.transform.GetChild(3).GetComponent<Dropdown>();
         finish.onClick.AddListener(finishAndLaunch);
         statPoints = 10; //sets default amount of stat allocation points to 10
     }
@@ -45,7 +44,6 @@ public class CharacterCreation : MonoBehaviour
         Player.intelligence = statPanels[3].GetComponent<StatBlock>().getStat();
         Player.wisdom = statPanels[4].GetComponent<StatBlock>().getStat();
         Player.charisma = statPanels[5].GetComponent<StatBlock>().getStat();
-        //Player.charClass = classChoice.options[classChoice.value].text;
 
         SceneManager.LoadScene("DungeonLevel"); //changes scene to the dungeon level
     }
