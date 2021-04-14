@@ -2719,7 +2719,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   exitTrigger: {fileID: 604518564}
-  sceneName: DungeonLevel
+  sceneName: SecondLevel
 --- !u!1 &615228474
 GameObject:
   m_ObjectHideFlags: 0
@@ -4315,7 +4315,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06beea45986cb2942be9b7b6c42c6fda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 0.1
   xpValue: 40
 --- !u!65 &867580288
 BoxCollider:
@@ -6148,7 +6147,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06beea45986cb2942be9b7b6c42c6fda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 0.5
   xpValue: 50
 --- !u!65 &1069955989
 BoxCollider:
@@ -9310,7 +9308,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06beea45986cb2942be9b7b6c42c6fda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 0.1
   xpValue: 25
 --- !u!95 &1780981651
 Animator:
@@ -10032,7 +10029,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   exitTrigger: {fileID: 1981102753}
-  sceneName: MainMenu
+  sceneName: SecondLevel
 --- !u!65 &1981102756
 BoxCollider:
   m_ObjectHideFlags: 0
