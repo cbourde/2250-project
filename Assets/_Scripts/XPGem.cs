@@ -7,7 +7,7 @@ public class XPGem : MonoBehaviour
     public int xpValue = 40;
     private bool _hasCollided = false;
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter(Collision collision)  //XP gem is destroyed and player is rewarded
     {
         if (!_hasCollided && collision.gameObject.CompareTag("Player"))
         {

@@ -43,6 +43,7 @@ public class RangedEnemy : Character
     {
         float distance = Vector3.Distance(target.position, transform.position);
         Follow(distance);
+
     }
 
     void OnDrawGizmosSelected() //visual boundary of enemy field
@@ -71,9 +72,11 @@ public class RangedEnemy : Character
     {
 
         if (distance <= viewRadius) //move towards target if in range
-        {
+        {   
             
             agent.SetDestination(target.position);
+
+
 
             if (distance <= attackReach)
             {
@@ -88,6 +91,15 @@ public class RangedEnemy : Character
             if (_attackTimer <= 0 && canAttack)
             {
                 _attackTimer = (int)(attackInterval * 60);
+            }
+
+
+            if (Input.GetKeyDown(KeyCode.T))
+            {
+               
+                
+                    TakeDamage(10);
+                
             }
         }
     }

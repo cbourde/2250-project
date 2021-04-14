@@ -14,12 +14,7 @@ public class PuzzleController : MonoBehaviour
     {
         objectToReveal.SetActive(false);
     }
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    
     public bool Check(int plateNum)
     {
         if (plateNum == _currentPlate)

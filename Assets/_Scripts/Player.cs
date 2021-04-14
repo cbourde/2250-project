@@ -12,16 +12,12 @@ public class Player : Character
     private int _xpToNextLevel = 50;
     private int _level = 1;
     
-    //public float damageTimer = 2;   // Timer for repeated damage
-    //public GameObject enemy;    // Enemy to damage or take damage from (to be replaced with a list)
     public Text healthDisplay;  // Health display UI text
     public Text deathMessage;   // Death message UI text
     public Text xpDisplay;
     public GameObject levelUpMenu;
     public Rigidbody rb;
-    public Vector3 movement;
-    //public GameObject warrior;
-    //public GameObject mage;
+    public Vector3 movement;   
 
     // Stats (must be static for character creation to work properly)
     public static int strength = 1;
