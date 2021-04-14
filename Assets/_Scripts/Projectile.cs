@@ -34,8 +34,14 @@ public class Projectile : MonoBehaviour
             Enemy e = other.gameObject.GetComponent<Enemy>();
             e.TakeDamage(damage);
             Destroy(gameObject);
+        } else if (other.gameObject.CompareTag("RangedEnemy"))
+        {
+            RangedEnemy re = other.gameObject.GetComponent<RangedEnemy>();
+            re.TakeDamage(damage);
+            Destroy(gameObject);
         }
-      }
-      //if the arrow interacts with the enemy is will destroy it
+        
+    }
+    //if the arrow interacts with the enemy is will destroy it
 
 }

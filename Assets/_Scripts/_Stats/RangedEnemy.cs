@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Enemy : Character
+public class RangedEnemy : Character
 {
     public float viewRadius = 10f;
     public float attackReach = 2f;
@@ -18,6 +18,10 @@ public class Enemy : Character
 
     protected NavMeshAgent agent;
 
+    public GameObject Arrow;
+
+    public int arrowDamage = 7;
+    public float arrowLife = 2f;
 
     // Start is called before the first frame update
     void Start()
@@ -39,7 +43,6 @@ public class Enemy : Character
     {
         float distance = Vector3.Distance(target.position, transform.position);
         Follow(distance);
-
     }
 
     void OnDrawGizmosSelected() //visual boundary of enemy field
@@ -49,11 +52,6 @@ public class Enemy : Character
 
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(transform.position, attackReach);
-    }
-
-    public void Attack()
-    {
-        Player.P.TakeDamage(attackDamage);
     }
 
     public override void Die()
@@ -74,6 +72,7 @@ public class Enemy : Character
 
         if (distance <= viewRadius) //move towards target if in range
         {
+            
             agent.SetDestination(target.position);
 
             if (distance <= attackReach)
@@ -88,9 +87,9 @@ public class Enemy : Character
             _attackTimer -= 1;
             if (_attackTimer <= 0 && canAttack)
             {
-                Attack();
                 _attackTimer = (int)(attackInterval * 60);
             }
         }
-        }
+    }
+
 }
