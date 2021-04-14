@@ -44,7 +44,11 @@ public class PuzzleController : MonoBehaviour
         foreach (GameObject p in pressurePlates)
         {
             PuzzlePressurePlate plate = p.GetComponent<PuzzlePressurePlate>();
-            plate.ResetPlate();
+            if (plate.isPressed() == true)
+            {
+                plate.ResetPlate();
+            }
+            
         }
     }
 }
